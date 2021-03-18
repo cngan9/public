@@ -1,0 +1,17 @@
+Attached are the output notes you receive when running the associated python script, exploratory.py:
+cleaningNotes.txt:  Explicitly referencing (4) in the readme.txt file.
+outputNotes.txt:  Gives different approaches addressed and corresponding functions in the python file.
+
+Note that within the tar.gz file, you will find the python file in bin.  Within data/output, you will file plots associated with different components of the script.  As per your instructions, I've renamed bin/exploratory.py to bin/exploratory.py.bak.
+
+As a summary, the following steps taken were:
+Data Cleaning:  Various prices and signals were updated based on what appeared to be systematic typos.  After cleaning, there didn't appear to be a need to winsorize/truncate the data in any way.
+Non-stationarity of the price series led to look into whether we could model the series with ARIMA model:  End conclusion is that a single difference (I(1)) was sufficient ARIMA(0,1,0).
+Generation of return data:  Generate and correctly align return data.  Histograms of return data seems to show reasonable normality (didn't check quantitatively the skew/kurtosis)
+Analysis of price data as a cointegrated series:  Appears these two series are indeed cointegrated and thus, might be tradeable as a pair.
+Analysis of return data:
+Simple OLS regression:  Baseline for future work.
+Quantile Regression:  Is there a relationship between the returns that exists only in certain regions?  (tails, middle, upper-tail, lower-tail, etc...)
+Lagged OLS Regression:  It appears that lagged terms (through 5) might contribute to predicting future SPY returns.
+Ensemble of learners:  Setup code and structure to implement SuperLearner along with a straightforward approach toward defining large numbers of base-learners.  (Currently commented out)
+Rolling variables:  Maybe skew of one series might be a useful conditional to improve one of the prior models.

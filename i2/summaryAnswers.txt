@@ -1,0 +1,17 @@
+With respect to the questions:
+     1) Forecasting + confidence intervals:  Please see the shared/attached Google Colab
+
+     2) Reason for choosing technique:  Speed and performance.  
+     	       The model chosen was Facebook's Prophet package.  
+	       This was chosen because of the highly yearly, weekly, and intraday seasonal nature of the data.  Seasonality is difficult to fit with traditional ARIMA models (SARIMAX).  Additionally, incorporating holiday data is easily done in Prophet and less so for traditional univariate time-series models.  Basically, Prophet gets you to a strong model with little hyperparameter-tuning.  
+
+     3) How to improve the model:
+     	    Given that the forecasts are the result of a univariate time-series model, it's natural to expect that improvements in model error can be realized through the addition of orthogonal (non-traffic) data.
+	    One can take the approach of doing a "manual Gradient Boosting" approach of fitting a traditional ML model against the residuals of the current time-series model.
+	    This approach will allow us to leverage the strength of the univariate time-series forecasting model (incorporating seasonality), while being able to benefit from other covariates that may affect daily-variance (rain, temperature, etc...)
+
+     4) How to deploy:
+     	    As described above, deployment of my code is straightforward as all dependencies and code are wrapped up in a Docker Image that can then be executed on any machine with the Docker daemon running.
+	    Assuming the data is available on the host machine at /mnt/prod/school/data/raw/ and the image has been built and named falkon:1.0 one simply needs to run:
+
+	    docker run --name=Bridge -d -v /mnt/prod:/mnt/prod falkon:1.0 python3 /exeDir/Bridge.py

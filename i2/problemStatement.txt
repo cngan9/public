@@ -1,0 +1,13 @@
+Problem statement
+Given the data set (below), here are the questions you need to answer.
+1) Predict future values for that data set along with the corresponding confidence intervals,
+and plot it on a chart, using any technique of your choice.
+2) Why did you choose the technique that you did, and what other options did you
+consider/discard and why?
+3) How can the predictions be improved as new data comes in?
+4) What steps need to be taken to deploy this model in production?
+
+Data set
+https://data.seattle.gov/Transportation/Fremont-Bridge-Bicycle-Counter/65db-xm6k
+This data set represents the number of bicycles crossing the Fremont bridge every day. You can
+download the data as a CSV.
